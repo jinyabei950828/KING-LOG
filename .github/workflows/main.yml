@@ -6,16 +6,17 @@ jobs:
   build:
     runs-on: ubuntu-latest # 运行在 ubuntu 系统环境下
     steps:
-      - uses: actions/checkout@v3 
+      - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
-        with: 
-          node-version: '16.19.1'
-      - name: Install Dependencies 
+        with:
+          node-version: "16.19.1"
+      - name: Install Dependencies
         run: | # `run: |` 的方式，允许我们一次定义多个要执行的命令
+          npm i yarn -g
           yarn install
           yarn run build
       - name: Push To Pages
-        working-directory: ./docs/.vitepress/dist # 指定下面指令运行的目录
+        working-directory: docs/.vitepress/dist # 指定下面指令运行的目录
         run: |
           git init
           git checkout -b main
