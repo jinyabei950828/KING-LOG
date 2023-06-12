@@ -20,6 +20,6 @@ jobs:
           git init
           git checkout -b main
           git add -A
-          git -c user.name='beibei' -c user.email='3188517516@qq.com' commit -m "初始化构建"
+          git -c user.name='贝贝' -c user.email='3188517516@qq.com' commit -m "初始化构建"
           git remote add origin https://${{secrets.<TOKEN_BLOG_SITE>}}@github.com/beibei/blog.git
           git push origin main -f -q
