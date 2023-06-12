@@ -1,14 +1,7 @@
 name: Deploy
-
-# on 定义的是执行该 Action 的时机，这里的配置是指：
-# 当 main 分支的 push 事件被触发的时候执行该任务
 on:
   push:
     branches: [main]
-# jobs 是定义你要运行的具体任务，
-# 每个 Action 可以有多个 Job
-# 每个 Job 可以有多个 Step
-# 每个 Step 又可以有多个 Run
 jobs:
   build:
     runs-on: ubuntu-latest # 运行在 ubuntu 系统环境下
@@ -27,8 +20,6 @@ jobs:
           git init
           git checkout -b main
           git add -A
-        # 这里把下面所有 `<YOUR_NAME>/<YOUR_EMAIL>/<COMMIT_MSG>/<YOUR_TOKEN>` 替换成你自己的就可以了
-          git -c user.name='beibei' -c user.email='3188517516@qq.com' commit -m '初始化构建'
-        # 这里需要一个 共开仓库 的 secrets 配置，这里的 secrets 是一个环境变量，可以直接拿过来直接用
-          git remote add origin https://${{secrets.<YOUR_TOKEN>}}@github.com/beibei/blog.git
+          git -c user.name='beibei' -c user.email='3188517516@qq.com' commit -m "初始化构建"
+          git remote add origin https://${{secrets.<TOKEN_BLOG_SITE>}}@github.com/beibei/blog.git
           git push origin main -f -q
